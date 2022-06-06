@@ -22,15 +22,15 @@ export class AppComponent
 
   elMod: Employee | null = null;
 
-  id: number = 0;
+  id: number = this.data[this.data.length - 1].id + 1;
   constructor(public dialog: MatDialog) {}
 
   Aggiungi():void
   {
-    
+
     this.elMod = new Employee;
     this.elMod.id = this.id;
-    this.id = this.data.id;
+    this.id = this.id + 1;
     this.data.push(this.elMod);
 
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -62,7 +62,7 @@ export class AppComponent
     });
   }
 
-  closeEdit():void 
+  closeEdit():void
   {
     this.elMod = null;
   }

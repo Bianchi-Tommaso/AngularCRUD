@@ -1,4 +1,5 @@
-button {
+button
+{
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -9,4 +10,22 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+table
+{
+  width: 70%;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+}
+
+.pulsante-sopra-tabella
+{
+  margin-left: 45%;
+  margin-bottom: -15%;
 }
