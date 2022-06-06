@@ -1,0 +1,17 @@
+<div mat-dialog-content class="">
+  <mat-form-field appearance="fill" *ngIf="data.employee" >
+    <label class="d-flex justify-content-center">Nome</label><br><br>
+    <input matInput [(ngModel)]="data.employee.firstName"><br><br>
+    <label class="d-flex justify-content-center">Cognome</label><br>
+    <input matInput [(ngModel)]="data.employee.lastName"><br><br>
+    <label class="d-flex justify-content-center">Sesso</label><br>
+    <input matInput [(ngModel)]="data.employee.gender" ><br><br>
+    <label class="d-flex justify-content-center">Data Di Nascita</label><br>
+    <input matInput [(ngModel)]="data.employee.birthDate" ><br>
+  </mat-form-field>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annulla</button>
+  <button mat-button [mat-dialog-close]="data.employee" cdkFocusInitial>Conferma</button>
+</div>

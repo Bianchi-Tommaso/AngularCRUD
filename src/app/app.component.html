@@ -16,16 +16,16 @@
     </thead>
 
       <tbody>
-          <tr *ngFor="let employeData of data">
+          <tr *ngFor="let employeData of data; index as i">
             <th scope="row">{{employeData.id}}</th>
             <td>{{employeData.firstName}}</td>
             <td>{{employeData.lastName}}</td>
             <td>{{employeData.gender}}</td>
             <td>{{employeData.birthDate}}</td>
-            <button type="button" class="btn btn-danger" (click)="Elimina(employeData)"> Elimina </button>
+            <button type="button" class="btn btn-warning" (click)="openDialog(employeData)">Modifica</button>
+            <button type="button" class="btn btn-danger" (click)="Elimina(i)"> Elimina </button>
           </tr>
       </tbody>
 
 </table>
-
 

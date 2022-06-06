@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Employee } from './types/Employee';
+import { DialogData } from './types/DialogData';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from './modals/ DialogOverviewExampleDialog';
 
 @Component({
   selector: 'app-root',
@@ -16,24 +20,52 @@ export class AppComponent
     {id: 10005,birthDate: "1955-01-20",firstName: "Kyoichi",lastName: "Maliniak",gender: "M",hireDate: "1989-09-11T22:00:00.000+0000"}
   ];
 
-  constructor()
-  {}
+  elMod: Employee | null = null;
+
+  id: number = 0;
+  constructor(public dialog: MatDialog) {}
 
   Aggiungi():void
   {
+    
+    this.elMod = new Employee;
+    this.elMod.id = this.id;
+    this.id = this.data.id;
+    this.data.push(this.elMod);
 
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: new DialogData(this.elMod)
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
-  Elimina(employee:any):void
+  Modifica(employee:Employee):void
   {
-    let id = employee.id;
+    this.elMod = employee;
+  }
 
-    for(let i = 0; i < this.data.length; i++)
-    {
-      if(id == this.data.id)
-      {
-        this.data.splice(i,1);
-      }
-    }
+  Elimina(employee:number):void
+  {
+    this.data.splice(employee, 1);
+  }
+
+  openDialog(employeeToEdit:Employee): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: new DialogData(employeeToEdit)
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  closeEdit():void 
+  {
+    this.elMod = null;
   }
 }
+
+
